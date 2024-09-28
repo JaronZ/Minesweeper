@@ -1,9 +1,10 @@
 module Row where
+import Util (repeatTimes)
 
 type Row = [Char]
 
 generateRow :: Int -> Char -> Row
-generateRow cells = \value -> take cells (repeat value)
+generateRow = repeatTimes
 
 drawRowNumbers :: (Int, Int) -> IO ()
 drawRowNumbers (current, limit) = do putStr "   "
