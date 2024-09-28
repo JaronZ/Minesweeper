@@ -1,4 +1,4 @@
-module Grid (generateGridFrom, drawGrid, Grid) where
+module Grid (drawGrid, Grid) where
 import Row (drawRow, drawRowNumbers, generateRow, Row)
 import Util (repeatTimes)
 import Data.Char (ord, chr)
@@ -7,9 +7,6 @@ type Grid = [Row]
 
 altTableA :: Int
 altTableA = ord 'A'
-
-generateGridFrom :: (Int, Int) -> Char -> Grid
-generateGridFrom (x, y) = \startChar -> repeatTimes y (generateRow x startChar)
 
 drawGrid :: Int -> Grid -> IO ()
 drawGrid _ [] = return ()
