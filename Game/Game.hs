@@ -1,5 +1,5 @@
-module Game (minesweeper) where
-import GameBoard (generateBoardWithSize, drawBoard, Board)
+module Game.Game (minesweeper) where
+import Game.GameBoard (generateBoardWithSize, drawBoard, Board)
 
 type GameConfiguration = (Int, Board)
 

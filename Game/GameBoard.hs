@@ -1,6 +1,6 @@
-module GameBoard (generateBoardWithSize, drawBoard, Board) where
-import CellState (CellState (Hidden), CellValue (None), stateToChar)
-import Grid (Grid, drawGrid)
+module Game.GameBoard (generateBoardWithSize, drawBoard, Board) where
+import Game.CellState (CellState (Hidden), CellValue (None), stateToChar)
+import Grid.Grid (Grid, drawGrid)
 import Util (repeatTimes)
 
 type Board = [[CellState]]

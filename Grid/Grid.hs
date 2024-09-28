@@ -1,5 +1,5 @@
-module Grid (drawGrid, Grid) where
-import Row (drawRow, drawRowNumbers, generateRow, Row)
+module Grid.Grid (drawGrid, Grid) where
+import Grid.Row (drawRow, drawRowNumbers, generateRow, Row)
 import Util (repeatTimes)
 import Data.Char (ord, chr)
 

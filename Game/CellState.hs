@@ -1,4 +1,4 @@
-module CellState (
+module Game.CellState (
     CellState (Hidden, Flag, Unknown, Uncovered),
     CellValue (Empty, Bomb, Number, None),
     stateToChar

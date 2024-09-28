@@ -1,4 +1,4 @@
-import Game (minesweeper)
+import Game.Game (minesweeper)
 import Data.Char (toUpper)
 
 main :: IO ()
