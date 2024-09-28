@@ -26,7 +26,7 @@ To play the game run the following command in the terminal:
 stack ghci main.hs
 ```
 
-Then once you are in ghci run the following command:
+Then once you are in ghci call the following function:
 
 ```haskell
 main
