@@ -20,9 +20,10 @@ stack ghci --package System.Random
 
 ## Playing the game
 
-To play the game run the following command in the terminal:
+To play the game run the following commands in the terminal:
 
 ```bash
+cd src
 stack ghci main.hs
 ```
 
