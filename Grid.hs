@@ -1,4 +1,4 @@
-module Grid where
+module Grid (generateGridFrom, drawGrid, Grid) where
 import Row (drawRow, drawRowNumbers, generateRow, Row)
 import Util (repeatTimes)
 import Data.Char (ord, chr)

@@ -1,4 +1,4 @@
-module Game where
+module Game (minesweeper) where
 import Grid (generateGridFrom, drawGrid, Grid)
 
 startChar :: Char

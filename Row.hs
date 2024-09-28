@@ -1,4 +1,4 @@
-module Row where
+module Row (drawRow, drawRowNumbers, generateRow, Row) where
 import Util (repeatTimes)
 
 type Row = [Char]
