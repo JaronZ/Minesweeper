@@ -1,6 +1,5 @@
 module Game (minesweeper) where
-import GameBoard (generateBoardWithSize, boardToGrid, Board)
-import Grid (drawGrid)
+import GameBoard (generateBoardWithSize, drawBoard, Board)
 
 type GameConfiguration = (Int, Board)
 
@@ -14,7 +13,7 @@ minesweeper :: IO ()
 minesweeper = playGame classicGridConfiguration
 
 playGame :: GameConfiguration -> IO ()
-playGame (bombs, board) = do drawGrid 0 (boardToGrid board)
+playGame (bombs, board) = do drawBoard board
                              putStr "Enter an action and a cell (e.g. click C3): "
                              actionAndCell <- getLine
                              if actionAndCell == "Y" then
