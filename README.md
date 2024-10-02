@@ -15,7 +15,7 @@ After installing these you will also need the `System.Random` haskell module.
 To install this module run the following command in the terminal:
 
 ```bash
-stack ghci --package System.Random
+stack ghci --package random
 ```
 
 ## Playing the game

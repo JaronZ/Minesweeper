@@ -1,12 +1,17 @@
 module Grid.Grid (drawGrid, Grid) where
 import Grid.Row (drawRow, drawRowNumbers, generateRow, Row)
 import Util (repeatTimes)
-import Data.Char (ord, chr)
+import Data.Char (ord, chr, digitToInt)
 
 type Grid = [Row]
 
 altTableA :: Int
 altTableA = ord 'A'
+
+--getPosition :: String -> (Int, Int)
+--getPosition cell = do col <- ord (head cell)
+--                      row <- digitToInt (head cell)
+--                      return (col, row)
 
 drawGrid :: Int -> Grid -> IO ()
 drawGrid _ [] = return ()
