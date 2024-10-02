@@ -1,4 +1,5 @@
-module Util (repeatTimes, replace, replaceWith, applyPositionBoundary) where
+module Util (repeatTimes, replace, replaceWith, applyPositionBoundary, altTableA) where
+import Data.Char (ord)
 
 repeatTimes :: Int -> a -> [a]
 repeatTimes n x = take n (repeat x)
@@ -18,3 +19,6 @@ applyPositionBoundary (xBounds, yBounds) = \(x, y) -> (applyIntBoundary xBounds 
 
 applyIntBoundary :: (Int, Int) -> Int -> Int
 applyIntBoundary (minN, maxN) = \n -> min maxN (max minN n)
+
+altTableA :: Int
+altTableA = ord 'A'

@@ -49,7 +49,7 @@ fillBoardWithBombs (bombs, boardIO) = \(x, y) -> do board <- boardIO
                                                          in fillBoardWithBombs (bombs-1, (return newBoard)) (x, y)
 
 placeBombOnBoard :: Board -> (Int, Int) -> Board
-placeBombOnBoard board = \(x, y) -> do let replacedBoardWithBombs = replace board x (replace (board !! x) y (Uncovered Bomb))
+placeBombOnBoard board = \(x, y) -> do let replacedBoardWithBombs = replace board x (replace (board !! x) y (Hidden Bomb))
                                            replacedBoardWithNumbers = incrementCells replacedBoardWithBombs ((x-1, y-1), (x+1, y+1))
                                        replacedBoardWithNumbers
 

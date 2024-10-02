@@ -1,9 +1,15 @@
-module Game.Action (click, flag, unknown) where
+module Game.Action (performGameAction, GameAction (AClick, AFlag, AUnknown)) where
 import Game.GameBoard (Board)
 import Game.CellState (CellState (Hidden, Flag, Unknown, Uncovered))
 import Util (replace)
 
 type ActionFunction = Board -> (Int, Int) -> Board
+data GameAction = AClick | AFlag | AUnknown
+
+performGameAction :: GameAction -> ActionFunction
+performGameAction AClick = click
+performGameAction AFlag = flag
+performGameAction AUnknown = unknown
 
 click :: ActionFunction
 click = performActionAt (\state -> case state of
