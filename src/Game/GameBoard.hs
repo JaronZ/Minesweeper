@@ -1,4 +1,12 @@
-module Game.GameBoard (generateBoardWithSize, drawBoard, fillBoardCellValues, Board) where
+module Game.GameBoard (
+    generateBoardWithSize,
+    drawBoard,
+    fillBoardCellValues,
+    isUncoveredBomb,
+--    isUncoveredEmpty,
+    allBombsFlaggedOrHiddenAndOtherCellsUncovered,
+    Board,
+    BoardRow) where
 import Game.CellState (
     CellState (Hidden, Flag, Unknown, Uncovered),
     CellValue (Empty, Bomb, Number, None),
@@ -6,12 +14,15 @@ import Game.CellState (
     getValueOfState,
     setValueOfState,
     valueEquals,
+    stateEquals,
+    stateEqualsIgnoreValue,
     incrementValueFromState)
 import Grid.Grid (Grid, drawGrid)
 import Util (repeatTimes, replace, replaceWith, applyPositionBoundary)
 import System.Random (randomRIO)
 
-type Board = [[CellState]]
+type BoardRow = [CellState]
+type Board = [BoardRow]
 type BoardBombFiller = (Int, IO Board) -> (Int, Int) -> IO Board
 
 initialCellState :: CellState
@@ -65,7 +76,7 @@ incrementCells board = \(posStart, posEnd) -> do let applyBoundaries = applyPosi
                                                    else
                                                       incrementCells replacedBoard ((fromX+1, fromY), (toX, toY))
 
-incrementCellRow :: [CellState] -> (Int, Int) -> [CellState]
+incrementCellRow :: BoardRow -> (Int, Int) -> BoardRow
 incrementCellRow row = \(from, to) -> do if from > to then
                                             incrementCellRow row (to, from)
                                          else
@@ -83,3 +94,13 @@ boardToGrid board = map (map stateToChar) board
 
 getCellValueAtPosition :: Board -> (Int, Int) -> CellValue
 getCellValueAtPosition board = \(x, y) -> getValueOfState ((board !! x) !! y)
+
+isUncoveredBomb :: Board -> (Int, Int) -> Bool
+isUncoveredBomb board = \(x, y) -> stateEquals ((board !! x) !! y, Uncovered Bomb)
+
+--isUncoveredEmpty :: Board -> (Int, Int) -> Bool
+--isUncoveredEmpty board = \(x, y) -> stateEquals ((board !! x) !! y, Uncovered Empty)
+
+allBombsFlaggedOrHiddenAndOtherCellsUncovered :: Board -> Bool
+allBombsFlaggedOrHiddenAndOtherCellsUncovered board = all (\row -> all (\state -> do
+    stateEquals (state, Flag Bomb) || stateEquals (state, Hidden Bomb) || stateEqualsIgnoreValue (state, Uncovered None)) row) board

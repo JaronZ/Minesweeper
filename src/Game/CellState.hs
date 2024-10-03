@@ -5,6 +5,8 @@ module Game.CellState (
     getValueOfState,
     setValueOfState,
     valueEquals,
+    stateEquals,
+    stateEqualsIgnoreValue,
     incrementValueFromState
 ) where
 import Data.Char (isDigit, digitToInt)
@@ -52,6 +54,20 @@ valueEquals (Bomb, Bomb) = True
 valueEquals (Number _, Number _) = True
 valueEquals (None, None) = True
 valueEquals _ = False
+
+stateEquals :: (CellState, CellState) -> Bool
+stateEquals (Hidden a, Hidden b) = valueEquals (a, b)
+stateEquals (Flag a, Flag b) = valueEquals (a, b)
+stateEquals (Unknown a, Unknown b) = valueEquals (a, b)
+stateEquals (Uncovered a, Uncovered b) = valueEquals (a, b)
+stateEquals _ = False
+
+stateEqualsIgnoreValue :: (CellState, CellState) -> Bool
+stateEqualsIgnoreValue (Hidden _, Hidden _) = True
+stateEqualsIgnoreValue (Flag _, Flag _) = True
+stateEqualsIgnoreValue (Unknown _, Unknown _) = True
+stateEqualsIgnoreValue (Uncovered _, Uncovered _) = True
+stateEqualsIgnoreValue _ = False
 
 --charToValue :: Char -> CellValue
 --charToValue c | c == '/' = Empty
