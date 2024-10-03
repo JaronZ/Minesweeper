@@ -5,13 +5,13 @@ This game is used as research in a school assignment.
 
 ## Playing the game
 
-**The game can only be played on windows. To compile it for your own operating system, see [Building](#building)**
+**The game can only be played on windows. To compile it for your own operating system, take a look at how it was done in build.bat and build.ps1.**
 
 To play the game, download an exe from the releases and then run it.
 
 ## Building
 
-To build the game yourself run the following in your terminal of choice (Windows only):
+To build the game yourself run the following in your terminal of choice (Windows only). The generated .exe can be found in the `bin` directory:
 
 ### Command Prompt / PowerShell
 
